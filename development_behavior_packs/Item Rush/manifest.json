@@ -1,0 +1,23 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Item Rush",
+		"description": "Item Rush Behavior Pack",
+		"uuid": "934ae0e3-f566-495b-9a4e-a6131dfa88b2",
+		"version": [1,0,0],
+		"min_engine_version": [1,16,0]
+	},
+	"metadata": {
+		"authors": [
+			"Kirbycope"
+		]
+	},
+	"modules": [
+		{
+			"description": "Behavior",
+			"version": [1,0,0],
+			"uuid": "7a03209f-17e3-47cb-bd7e-3a34d6723d28",
+			"type": "data"
+		}
+	]
+}
