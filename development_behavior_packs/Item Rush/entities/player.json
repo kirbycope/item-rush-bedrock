@@ -164,7 +164,7 @@
       "minecraft:block_climber": {},
       "minecraft:environment_sensor": {
         "triggers": [
-          {"filters": {"all_of": [{"test": "has_mob_effect","subject": "self","value": "bad_omen"},{"test": "is_in_village","subject": "self","value": true}]},"event": "minecraft:trigger_raid"},
+          {"filters":{"all_of":[{"test":"has_mob_effect","subject":"self","value":"bad_omen"},{"test":"is_in_village","subject":"self","value": true}]},"event":"minecraft:trigger_raid"},
 					{"filters":{"all_of":[{"test":"has_equipment","subject":"self","value":"minecraft: acacia_boat","domain":"inventory","operator":"=="}]},"event":"ir:acacia_boat"},
           {"filters":{"all_of":[{"test":"has_equipment","subject":"self","value":"minecraft:acacia_button","domain":"inventory","operator":"=="}]},"event":"ir:acacia_button"},
           {"filters":{"all_of":[{"test":"has_equipment","subject":"self","value":"minecraft:acacia_door","domain":"inventory","operator":"=="}]},"event":"ir:acacia_door"},
