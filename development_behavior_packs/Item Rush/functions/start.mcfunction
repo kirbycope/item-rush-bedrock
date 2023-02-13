@@ -1,3 +1,6 @@
+# Add objectives
+function add-objectives
+
 # Clear items
 clear @a
 
