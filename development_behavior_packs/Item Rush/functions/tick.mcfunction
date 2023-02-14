@@ -13,8 +13,8 @@ execute @a[tag=init,scores={rushing=2}] ~ ~ ~ function countdown
 # Check the rush timer
 execute @a[tag=init,scores={rushing=3}] ~ ~ ~ function rush
 
-# Check for scores ## ToDo
-#execute as @a[tag=init,scores={rushing=3}] run function check-progress
+# Check for scores
+execute @a[tag=init,scores={rushing=3}]  ~ ~ ~ function check-progress
 
 # Check for deaths ## ToDo
 #execute as @a[tag=init,scores={rushing=3}] run function pvp
