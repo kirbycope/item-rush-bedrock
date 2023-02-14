@@ -1,0 +1,24 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Item Rush",
+		"description": "Item Rush Resource Pack",
+		"uuid": "76624667-7203-0789-ce17-3fe9d075e593",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 16, 0]
+	},
+	"metadata": {
+		"authors": ["Kirbycope"],
+		"generated_with": {
+			"blockbench_block_wizard": ["1.1.2"]
+		}
+	},
+	"modules": [
+		{
+			"description": "Item Rush",
+			"type": "resources",
+			"uuid": "cda1da3d-0974-6776-86f9-6d095c230563",
+			"version": [1, 0, 0]
+		}
+	]
+}

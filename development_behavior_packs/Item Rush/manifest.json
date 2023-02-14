@@ -3,21 +3,28 @@
 	"header": {
 		"name": "Item Rush",
 		"description": "Item Rush Behavior Pack",
-		"uuid": "934ae0e3-f566-495b-9a4e-a6131dfa88b2",
-		"version": [1,0,0],
-		"min_engine_version": [1,16,0]
+		"uuid": "ca661c3d-50c9-77c1-039a-1b7f5d70ef20",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 16, 0]
 	},
 	"metadata": {
-		"authors": [
-			"Kirbycope"
-		]
+		"authors": ["Kirbycope"],
+		"generated_with": {
+			"blockbench_block_wizard": ["1.1.2"]
+		}
 	},
 	"modules": [
 		{
 			"description": "Behavior",
-			"version": [1,0,0],
-			"uuid": "7a03209f-17e3-47cb-bd7e-3a34d6723d28",
+			"version": [1, 0, 0],
+			"uuid": "42c98558-e3a4-1ffc-d646-6205d6420e14",
 			"type": "data"
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "76624667-7203-0789-ce17-3fe9d075e593",
+			"version": [1, 0, 0]
 		}
 	]
 }
