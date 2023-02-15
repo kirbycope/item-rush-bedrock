@@ -25,9 +25,9 @@ title @a times 0 60 0
 title @a title §1@r wins!§f
 
 function remove-tags
+function reset-objectives
 scoreboard players set @a timer 0
 scoreboard players set @a rushing 0
-#scoreboard players enable @a rushing
 
 # Give player an Owner's Manual
 #function ir:owners-manual
