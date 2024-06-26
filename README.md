@@ -5,5 +5,6 @@ Item Rush game mode for Minecraft Bedrock Edition. You have 15 minutes to craft 
 
 ## Installation
 1. Download the [.mctemplate file](https://github.com/kirbycope/item-rush-bedrock/raw/main/item-rush-bedrock.mctemplate)
-1. Double-click the downloaded file to install and launch Minecraft
-1. Start a new save/world and select the imported template
+1. Double-click the mctemplate file
+1. Create a New World using the template
+    - "Play" > "Create New"  > Scroll down to "Imported Templates" (Select "See More" if necessary)
