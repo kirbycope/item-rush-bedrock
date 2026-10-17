@@ -4,8 +4,8 @@
 		"name": "Item Rush",
 		"description": "Item Rush Resource Pack",
 		"uuid": "76624667-7203-0789-ce17-3fe9d075e593",
-		"version": [1, 0, 0],
-		"min_engine_version": [1, 16, 0]
+		"version": [1, 1, 0],
+		"min_engine_version": [1, 26, 0]
 	},
 	"metadata": {
 		"authors": ["Kirbycope"],
@@ -18,7 +18,7 @@
 			"description": "Item Rush",
 			"type": "resources",
 			"uuid": "cda1da3d-0974-6776-86f9-6d095c230563",
-			"version": [1, 0, 0]
+			"version": [1, 1, 0]
 		}
 	]
 }

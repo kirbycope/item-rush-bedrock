@@ -1,26 +1,26 @@
 # Initialze new world
-execute @a[c=1] ~ ~ ~ function load
+execute as @a[c=1] at @s run function load
 
 # Initialize new players
-execute @a[tag=!init] ~ ~ ~ function init-player
+execute as @a[tag=!init] at @s run function init-player
 
 # Start the rush
-execute @a[tag=init,scores={rushing=1}] ~ ~ ~ function start
+execute as @a[tag=init,scores={rushing=1}] at @s run function start
 
 # Check the countdown timer
-execute @a[tag=init,scores={rushing=2}] ~ ~ ~ function countdown
+execute as @a[tag=init,scores={rushing=2}] at @s run function countdown
 
 # Check the rush timer
-execute @a[tag=init,scores={rushing=3}] ~ ~ ~ function rush
+execute as @a[tag=init,scores={rushing=3}] at @s run function rush
 
 # Check for scores
-execute @a[tag=init,scores={rushing=3}]  ~ ~ ~ function check-progress
+execute as @a[tag=init,scores={rushing=3}] at @s run function check-progress
 
 # Check for deaths ## ToDo
 #execute as @a[tag=init,scores={rushing=3}] run function pvp
 
 # Increment timer if running
-execute @a[tag=init,scores={timer=1..}] ~ ~ ~ scoreboard players add @a timer 1
+execute as @a[tag=init,scores={timer=1..}] at @s run scoreboard players add @a timer 1
 
 # Rainbow scoreboard sidebar title ## Not doable in Bedrock
 #execute @a[tag=init,scores={timer=1..}] ~ ~ ~ function title
