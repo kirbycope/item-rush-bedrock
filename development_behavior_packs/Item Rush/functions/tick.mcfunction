@@ -22,5 +22,4 @@ execute as @a[tag=init,scores={rushing=3}] at @s run function check-progress
 # Increment timer if running
 execute as @a[tag=init,scores={timer=1..}] at @s run scoreboard players add @a timer 1
 
-# Rainbow scoreboard sidebar title ## Not doable in Bedrock
-#execute @a[tag=init,scores={timer=1..}] ~ ~ ~ function title
+# The rainbow sidebar title is animated by scripts/main.js

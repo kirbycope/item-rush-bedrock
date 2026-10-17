@@ -1,0 +1,8 @@
+[
+	{
+		"flipbook_texture": "textures/blocks/border_block",
+		"atlas_tile": "border_block",
+		"ticks_per_frame": 2,
+		"blend_frames": false
+	}
+]

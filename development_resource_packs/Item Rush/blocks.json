@@ -1,5 +1,6 @@
 {
-	"border_block": {
-		"sound": "stone"
+	"format_version": "1.21.40",
+	"ir:border_block": {
+		"sound": "glass"
 	}
 }

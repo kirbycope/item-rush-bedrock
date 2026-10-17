@@ -1,4 +1,4 @@
-import { system, world } from "@minecraft/server";
+import { BlockVolume, DisplaySlotId, system, world } from "@minecraft/server";
 
 // Item Rush: one point per unique item a player gets during the rush. Each item has an objective o0 to o1098; this
 // sets a player's to 1 the first time the item is in their inventory, held or worn, and check-progress turns that
@@ -1093,5 +1093,67 @@ system.runInterval(() => {
 			if (objective && objective.getScore(player) !== 1) objective.setScore(player, 1);
 		}
 		player.runCommand("function collect-colored");
+	}
+}, 10);
+
+// The rainbow sidebar title, as the Java version has: every letter of "Rush" in its own colour, the colours stepping
+// along every 4 ticks. Bedrock cannot rename an objective, so each step is a new display objective with the next
+// colours and a copy of the scores in "score", shown in the sidebar in place of the last one.
+const TITLE = "Rush";
+const RAINBOW = ["§c", "§6", "§e", "§a", "§b", "§9", "§d"];
+const DISPLAY = "ir_title_";
+let frame = 0;
+
+system.runInterval(() => {
+	const score = world.scoreboard.getObjective("score");
+	const shown = world.scoreboard.getObjectiveAtDisplaySlot(DisplaySlotId.Sidebar)?.objective;
+	if (!score || !shown || (shown.id !== "score" && !shown.id.startsWith(DISPLAY))) return;
+	frame = (frame + 1) % RAINBOW.length;
+	const name = [...TITLE].map((letter, i) => RAINBOW[(i + RAINBOW.length - frame) % RAINBOW.length] + letter).join("") + "§r";
+	const id = DISPLAY + frame;
+	world.scoreboard.getObjective(id) && world.scoreboard.removeObjective(id);
+	const display = world.scoreboard.addObjective(id, name);
+	for (const participant of score.getParticipants()) {
+		const value = score.getScore(participant);
+		if (value !== undefined) display.setScore(participant, value);
+	}
+	world.scoreboard.setObjectiveAtDisplaySlot(DisplaySlotId.Sidebar, { objective: display });
+	for (const old of world.scoreboard.getObjectives()) if (old.id.startsWith(DISPLAY) && old.id !== id) world.scoreboard.removeObjective(old);
+}, 4);
+
+// The world border: a wall of ir:border_block 64 blocks across, centred on 0 0, from the bottom of the world to the
+// top. The template world was saved after its one-time setup had run, so init-world, which used to build the wall,
+// never runs in a new world; the script builds it instead, retrying until the chunks it needs are loaded, and marks
+// it done in the world. Players are also kept inside, so nothing gets round it.
+const EDGE = 32;   // the wall stands at -32 and 32 on both axes; the playing area is -31 to 31
+const BORDER_VERSION = 3;
+
+function buildBorder() {
+	if (world.getDynamicProperty("ir:border") === BORDER_VERSION) return true;
+	const overworld = world.getDimension("overworld");
+	const { min, max } = overworld.heightRange;
+	const walls = [
+		[{ x: -EDGE, y: min, z: -EDGE }, { x: -EDGE, y: max - 1, z: EDGE }],
+		[{ x: EDGE, y: min, z: -EDGE }, { x: EDGE, y: max - 1, z: EDGE }],
+		[{ x: -EDGE, y: min, z: -EDGE }, { x: EDGE, y: max - 1, z: -EDGE }],
+		[{ x: -EDGE, y: min, z: EDGE }, { x: EDGE, y: max - 1, z: EDGE }],
+	];
+	try {
+		for (const [from, to] of walls) overworld.fillBlocks(new BlockVolume(from, to), "ir:border_block");
+	} catch {
+		return false;   // part of the border is not loaded yet; try again shortly
+	}
+	world.setDynamicProperty("ir:border", BORDER_VERSION);
+	world.sendMessage("World Border set to 64 blocks wide");
+	return true;
+}
+
+system.runInterval(() => {
+	buildBorder();
+	for (const player of world.getAllPlayers()) {
+		if (player.dimension.id !== "minecraft:overworld") continue;
+		const { x, y, z } = player.location;
+		const inside = (v) => Math.min(Math.max(v, -EDGE + 1.3), EDGE - 0.3);
+		if (inside(x) !== x || inside(z) !== z) player.teleport({ x: inside(x), y, z: inside(z) }, { keepVelocity: false });
 	}
 }, 10);

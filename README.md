@@ -14,6 +14,11 @@ Minecraft Bedrock 1.26.0 or newer, with no experiments. Each player's items are 
 (`scripts/main.js`, `@minecraft/server` 2.6.0) instead of the old `player.json` override, so the world keeps the
 current vanilla player.
 
+The world border is a wall 64 blocks across, centred on 0 0, from the bottom of the world to the top, drawn like
+Java Edition's: a translucent field of scrolling cyan lines. The script builds it the first time the world loads and
+keeps every player inside it. `/function worldborder` builds it again by hand. The sidebar title is rainbow text
+whose colours change every few ticks, as in the Java version.
+
 ## Releasing
 Pushing a tag that starts with `v` (for example `git tag v1.0.0 && git push origin v1.0.0`) runs the Release workflow in `.github/workflows/release.yml`, which builds the world template and attaches `item-rush-bedrock.mctemplate` to a GitHub Release.
 
